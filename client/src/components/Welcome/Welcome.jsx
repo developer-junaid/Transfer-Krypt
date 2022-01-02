@@ -30,11 +30,8 @@ const commonStyles =
 
 const Welcome = () => {
   // Context
-  const { value } = useContext(TransactionContext);
+  const { connectWallet, currentAccount } = useContext(TransactionContext);
 
-  console.log("value at welcome:", value);
-
-  const connectWallet = () => {};
   const handleChange = (e, name) => {};
   const handleSubmit = () => {};
 
@@ -49,15 +46,18 @@ const Welcome = () => {
             Explore the crypto world. Buy and sell cryptocurrencies easily on
             Krypto.
           </p>
-          <button
-            type="button"
-            onClick={connectWallet}
-            className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd] "
-          >
-            <span className="text-white text-base font-semibold">
-              Connect Wallet
-            </span>
-          </button>
+
+          {!currentAccount && (
+            <button
+              type="button"
+              onClick={connectWallet}
+              className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd] "
+            >
+              <span className="text-white text-base font-semibold">
+                Connect Wallet
+              </span>
+            </button>
+          )}
 
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${commonStyles}`}>Reliability</div>
