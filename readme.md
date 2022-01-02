@@ -71,3 +71,9 @@ npx hardhat run scripts/deploy.js --network ropsten
 - - Import it and export abi from utils/constants
 
 6. Interacting from Frontend to Smart Contract
+
+- Create context for the logic
+- Connect context
+- Write logic for checking wallet is already connected or not
+- Setup connect wallet feature
+- Setup sendTransaction feature
