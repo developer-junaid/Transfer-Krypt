@@ -114,6 +114,8 @@ export const TransactionProvider = ({ children }) => {
       });
 
       setCurrentAccount(accounts[0]);
+      window.location.reload();
+      window.re;
     } catch (error) {
       console.log(error);
 
@@ -157,7 +159,7 @@ export const TransactionProvider = ({ children }) => {
       const transactionsCount = await transactionContract.getTransactionCount();
 
       setTransactionCount(transactionsCount.toNumber());
-      window.reload();
+      window.location.reload();
     } catch (error) {
       console.log(error);
 
