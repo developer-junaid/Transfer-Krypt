@@ -5,6 +5,7 @@
 - Hardhat (To run solidity locally)
 - Alchemy (To deploy smart contract on blockchain)
 - Hardhat waffle (To build smart contract tests )
+- Giphy (for gifs)
 
 ## Steps
 

@@ -11,6 +11,9 @@ import { Loader } from "../";
 // Context
 import { TransactionContext } from "../../context/TransactionContext";
 
+// Utils
+import { shortenAddress } from "../../utils/shortenAddress";
+
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
     className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
@@ -93,7 +96,9 @@ const Welcome = () => {
                 <BsInfoCircle fontSize={17} color="#fff" />
               </div>
               <div>
-                <p className="text-white font-light text-sm">Address</p>
+                <p className="text-white font-light text-sm">
+                  {shortenAddress(currentAccount)}
+                </p>
                 <p className="text-white font-semibold text-lg mt-1">
                   Ethereum
                 </p>
