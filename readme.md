@@ -77,3 +77,4 @@ npx hardhat run scripts/deploy.js --network ropsten
 - Write logic for checking wallet is already connected or not
 - Setup connect wallet feature
 - Setup sendTransaction feature
+- Setup AddToBlockchain feature
