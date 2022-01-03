@@ -20,22 +20,22 @@ const getEthereumContract = () => {
     signer
   );
 
-  console.log({
-    provider,
-    signer,
-    transactionContract,
-  });
+  return transactionContract;
 };
 
 // Provider
 export const TransactionProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     addressTo: "",
     amount: "",
     keyword: "",
     message: "",
   });
+  const [transactionCount, setTransactionCount] = useState(
+    localStorage.getItem("transactionCount")
+  );
 
   // Handlers
   const handleChange = (e, name) => {
@@ -99,6 +99,23 @@ export const TransactionProvider = ({ children }) => {
           },
         ],
       });
+
+      const transactionHash = await transactionContract.addToBlockchain(
+        addressTo,
+        parsedAmount,
+        message,
+        keyword
+      );
+
+      setIsLoading(true);
+      console.log(`Loading - ${transactionHash.hash}`);
+      await transactionHash.wait();
+      console.log(`Success - ${transactionHash.hash}`);
+      setIsLoading(false);
+
+      const transactionsCount = await transactionContract.getTransactionCount();
+
+      setTransactionCount(transactionsCount.toNumber());
     } catch (error) {
       console.log(error);
 
