@@ -39,6 +39,7 @@ const Welcome = () => {
     formData,
     handleChange,
     sendTransaction,
+    isLoading,
   } = useContext(TransactionContext);
 
   const handleSubmit = (event) => {
@@ -63,7 +64,7 @@ const Welcome = () => {
             Krypto.
           </p>
 
-          {!currentAccount && (
+          {!currentAccount ? (
             <button
               type="button"
               onClick={connectWallet}
@@ -73,6 +74,12 @@ const Welcome = () => {
                 Connect Wallet
               </span>
             </button>
+          ) : (
+            <div className="flex flex-row justify-center items-center my-5 p-3 rounded-full">
+              <span className="text-green-500 text-base font-semibold">
+                Metamask connected
+              </span>
+            </div>
           )}
 
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
@@ -135,7 +142,7 @@ const Welcome = () => {
 
             <div className="h-[1px] w-full bg-gray-400 my-2"></div>
 
-            {false ? (
+            {isLoading ? (
               <Loader />
             ) : (
               <button
