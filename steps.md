@@ -12,7 +12,7 @@
 1. create folders client and smart_contract
 2. Setup client : (`cd client`)
 
-- Create react app using vite `vite init@latest` and select details
+- Create react app using vite `npm vite init@latest` and select details
 - Setup tailwind (install, setup config, setup css and test)
 - install dependencies
 
